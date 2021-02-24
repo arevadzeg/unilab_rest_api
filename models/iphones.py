@@ -23,7 +23,7 @@ class IphoneModel(db.Model):
     def find_by_name(cls, name):
         item = IphoneModel.query.filter_by(name=name).first()
         if item:
-            return item.json()
+            return item
 
 
 

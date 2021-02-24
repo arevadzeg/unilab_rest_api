@@ -14,7 +14,7 @@ class Iphones(Resource):
 
 
         if phone:
-            return phone
+            return phone.json()
         return 'No such phone'
 
 
@@ -45,7 +45,7 @@ class Iphones(Resource):
             item.price = parsed['price']
             item.quantity = parsed['quantity']
             item.save_to_db()
-            return {'message': "Succsess"}, 400
+            return {'message': "Succsess"}
 
 
 
