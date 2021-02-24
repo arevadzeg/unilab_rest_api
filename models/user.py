@@ -44,5 +44,3 @@ class UserModel(db.Model):
         db.session.commit()
 
 
-
-

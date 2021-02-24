@@ -87,7 +87,7 @@ class Iphones(Resource):
     def delete(self,name):
         phone = IphoneModel.find_by_name(name)
         if phone:
-            phone.delete_from_db()
+            IphoneModel.find_by_name(name).delete_from_db()
             return {"Message" :"Succsess"}
         return {"Message" :"No such Phone"}
 
