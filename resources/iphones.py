@@ -1,10 +1,7 @@
-
+from flask import jsonify
 from flask_restful import Resource, reqparse
 from flask_jwt import jwt_required
 from models.iphones import IphoneModel
-
-
-from models.user import UserModel
 
 
 
@@ -13,16 +10,16 @@ class Iphones(Resource):
 
     def get(self, name):
         phone = IphoneModel.find_by_name(name)
-        user_objects = UserModel.query.all()
 
-        for item in user_objects:
-            print(item.id)
-            # users.append(UserModel(item.id, item.username, item.password))
 
 
         if phone:
             return phone
         return 'No such phone'
+
+
+
+
 
 
     @jwt_required()
@@ -55,8 +52,6 @@ class Iphones(Resource):
         return {"Message": "We do not have such Phone"},404
 
 
-        # parsed = my_parser.parse_args()
-        # return IphoneModel.update_details(name,parsed['price'],parsed['quantity'])
 
 
     @jwt_required()
@@ -97,10 +92,16 @@ class Iphones(Resource):
         return {"Message" :"No such Phone"}
 
 
-#
-# class AllIphones(Resource):
-#
-#     def get(self):
-#         print(all_users)
-#         return  all_users
-#
+
+class AllIphones(Resource):
+    def get(self):
+        x = []
+        result = IphoneModel.query.all()
+        for item in result:
+            dict = {"Name":item.name, "Price":item.price, "Quantity":item.quantity }
+            x.append(dict)
+
+
+        print(x)
+        return jsonify(x)
+

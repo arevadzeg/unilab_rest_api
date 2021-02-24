@@ -17,6 +17,11 @@ class UserModel(db.Model):
         self.password = password
 
 
+
+
+
+
+
     @classmethod
     def find_by_name(cls, username):
         user = UserModel.query.filter_by(username=username).first()
@@ -26,7 +31,7 @@ class UserModel(db.Model):
         return None
 
     @classmethod
-    def find_by_id(cls):
+    def find_by_id(cls,id):
         user = UserModel.query.filter_by(id=id).first()
         if user:
             return user

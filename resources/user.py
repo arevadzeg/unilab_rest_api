@@ -34,7 +34,11 @@ class Register(Resource):
 class Users(Resource):
 
     @jwt_required()
-    def post(self, id):
-        user = UserModel.find_by_id(id)
-        return user
+    def post(self, username):
+        result = UserModel.find_by_name(username)
+        if result:
+            return {"Username": result.username, "Password":result.password}
+
+
+        return {"Message":{"No such User"}}
 #

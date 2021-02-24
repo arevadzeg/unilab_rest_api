@@ -1,8 +1,7 @@
 from flask import Flask, redirect
 from flask_jwt import  JWT
 from security import authentication, identity
-from resources.iphones import Iphones
-# from resources.iphones import AllIphones
+from resources.iphones import Iphones, AllIphones
 
 from flask_restful import Api
 
@@ -27,7 +26,7 @@ def home():
 
 
 
-# api.add_resource(AllIphones,'/Iphones')
+api.add_resource(AllIphones,'/Iphones')
 
 
 api.add_resource(Iphones,'/Iphones/<string:name>')
@@ -36,7 +35,7 @@ api.add_resource(Iphones,'/Iphones/<string:name>')
 
 api.add_resource(Register,'/Register')
 
-api.add_resource(Users,'/User/<string:id>')
+api.add_resource(Users,'/User/<string:username>')
 
 
 
