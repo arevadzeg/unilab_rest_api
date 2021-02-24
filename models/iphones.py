@@ -17,7 +17,7 @@ class IphoneModel(db.Model):
         self.quantity = quantity
 
     def json(self):
-        return {"name": self.name, "price": self.price}
+        return {"name": self.name, "price": self.price, "quantity": self.quantity}
 
     @classmethod
     def find_by_name(cls, name):
