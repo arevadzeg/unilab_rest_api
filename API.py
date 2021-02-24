@@ -24,10 +24,6 @@ app.config['PROPAGATE_EXCEPTIONS'] = True
 def home():
     return redirect('https://github.com/arevadzeg/unilab_rest_api/tree/main'), 302
 
-@app.before_first_request
-def create_table():
-    db.create_all()
-
 
 
 
